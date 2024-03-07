@@ -10,23 +10,23 @@ namespace ToDo
         static void Main(string[] args)
         {
             TaskList = new List<string>();
-            int variable = 0;
+            int selectedMenu = 0;
             do
             {
-                variable = ShowMainMenu();
-                if (variable == 1)
+                selectedMenu = ShowMainMenu();
+                if (selectedMenu == 1)
                 {
                     ShowMenuAdd();
                 }
-                else if (variable == 2)
+                else if (selectedMenu == 2)
                 {
                     ShowMenuDos();
                 }
-                else if (variable == 3)
+                else if (selectedMenu == 3)
                 {
                     ShowMenuTres();
                 }
-            } while (variable != 4);
+            } while (selectedMenu != 4);
         }
         /// <summary>
         /// Show the main menu 
