@@ -14,20 +14,21 @@ namespace ToDo
             do
             {
                 selectedMenu = ShowMainMenu();
-                if (selectedMenu == 1)
+                if ((Menu)selectedMenu == Menu.Add)
                 {
                     ShowMenuAdd();
                 }
-                else if (selectedMenu == 2)
+                else if ((Menu)selectedMenu == Menu.Remove)
                 {
                     ShowMenuRemove();
                 }
-                else if (selectedMenu == 3)
+                else if ((Menu)selectedMenu == Menu.List)
                 {
                     ShowMenuTaskList();
                 }
-            } while (selectedMenu != 4);
+            } while ((Menu)selectedMenu != Menu.Exit);
         }
+        
         /// <summary>
         /// Show the main menu 
         /// </summary>
@@ -42,8 +43,8 @@ namespace ToDo
             Console.WriteLine("4. Salir");
 
             // Read line
-            string line = Console.ReadLine();
-            return Convert.ToInt32(line);
+            string selection = Console.ReadLine();
+            return Convert.ToInt32(selection);
         }
 
         public static void ShowMenuRemove()
@@ -58,9 +59,9 @@ namespace ToDo
                 }
                 Console.WriteLine("----------------------------------------");
 
-                string line = Console.ReadLine();
+                string selection = Console.ReadLine();
                 // Remove one position
-                int indexToRemove = Convert.ToInt32(line) - 1;
+                int indexToRemove = Convert.ToInt32(selection) - 1;
                 if (indexToRemove > -1)
                 {
                     if (TaskList.Count > 0)
@@ -105,6 +106,13 @@ namespace ToDo
                 }
                 Console.WriteLine("----------------------------------------");
             }
+        }
+
+        public enum Menu{
+            Add = 1,
+            Remove = 2,
+            List = 3,
+            Exit = 4
         }
     }
 }
